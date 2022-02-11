@@ -1,0 +1,27 @@
+:root {
+  --app-background: #222;
+  --app-font-color: #EEE;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: var(--app-background);
+  color: var(--app-font-color);
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+header {
+  font-weight: bold;
+  font-size: 2em;
+  text-align: center;
+}
