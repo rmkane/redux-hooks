@@ -1,32 +1,39 @@
 {
-    "settings": {
-        "react": {
-            "version": "detect"
-        }
-    },
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": [
-        "plugin:react/recommended",
-        "plugin:react-hooks/recommended",
-        "airbnb"
-    ],
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react",
-        "react-hooks"
-    ],
-    "rules": {
-        "react/no-unused-prop-types": [ 1 ],
-        "react/prop-types": [ 1 ],
-        "react/display-name": [ 1 ]
+  "settings": {
+    "react": {
+      "version": "detect"
     }
+  },
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "airbnb",
+    "prettier",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "prettier",
+    "react",
+    "react-hooks"
+  ],
+  "rules": {
+    "no-unused-vars": [
+      1
+    ],
+    "prettier/prettier": "error",
+    "quotes": [2, "single"],
+    "react/no-unused-prop-types": "warn",
+    "react/prop-types": "warn",
+    "react/display-name": "warn"
+  }
 }

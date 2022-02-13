@@ -1,13 +1,16 @@
-import React, { useMemo } from 'react';
+import React from 'react';
+import { Counter, Todo } from './common';
 import '../../css/App.css';
-import Counter from './Counter';
 
-const App = () => useMemo(() => (
-  <div className="App">
-    <header>Counter</header>
-    <Counter />
-  </div>
-), []);
+function App() {
+  return (
+    <div className="App">
+      <header>Redux Hooks Sandbox</header>
+      <Counter />
+      <Todo />
+    </div>
+  );
+}
 
 App.displayName = 'App';
 

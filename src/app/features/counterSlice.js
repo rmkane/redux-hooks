@@ -1,5 +1,4 @@
 /* eslint-disable no-param-reassign */
-
 import { createSlice } from '@reduxjs/toolkit';
 
 const counterSlice = createSlice({
@@ -20,10 +19,11 @@ const counterSlice = createSlice({
   },
 });
 
-const { actions: { increment, decrement, incrementByAmount }, reducer } = counterSlice;
+const {
+  actions: { increment, decrement, incrementByAmount },
+  reducer,
+} = counterSlice;
 
-export {
-  counterSlice, increment, decrement, incrementByAmount,
-};
+export { counterSlice, increment, decrement, incrementByAmount };
 
 export default reducer;

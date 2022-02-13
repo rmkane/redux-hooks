@@ -25,3 +25,9 @@ header {
   font-size: 2em;
   text-align: center;
 }
+
+.App {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}

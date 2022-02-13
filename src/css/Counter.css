@@ -1,13 +1,18 @@
 .Counter {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: thin solid #AAA;
-    padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: thin solid #AAA;
+  padding: 1em;
+}
+
+.Header {
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
 .Value {
-    font-size: 3em;
-    margin-bottom: 1rem;
+  font-size: 3em;
+  margin-bottom: 1rem;
 }
