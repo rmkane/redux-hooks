@@ -1,14 +1,21 @@
-import React, { useMemo } from 'react';
-import PropTypes from 'prop-types';
+import React, { useCallback, useMemo, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { decrement, increment } from '../features/counter/counterSlice';
+import { decrement, increment, incrementByAmount } from '../features/counter/counterSlice';
 import '../../css/Counter.css';
 
-const Counter = (props) => {
+const Counter = () => {
   // eslint-disable-next-line no-unused-vars
-  const { value = 0 } = props;
   const count = useSelector(({ counter }) => counter.value);
   const dispatch = useDispatch();
+
+  // eslint-disable-next-line no-unused-vars
+  const [amount, setAmount] = useState(1);
+
+  const onAmountChange = useCallback(({ target: { value } }) => {
+    // eslint-disable-next-line no-console
+    console.log(value);
+    setAmount(value);
+  }, []);
 
   return useMemo(() => (
     <div className="Counter">
@@ -17,14 +24,14 @@ const Counter = (props) => {
         <button type="button" aria-label="Increment value" onClick={() => dispatch(increment())}>Increment</button>
         <button type="button" aria-label="Decrement value" onClick={() => dispatch(decrement())}>Decrement</button>
       </div>
+      <div>
+        <input type="number" size="3" value={amount} onChange={onAmountChange} />
+        <button type="button" onClick={() => dispatch(incrementByAmount(+amount))}>Add</button>
+      </div>
     </div>
-  ), [count]);
+  ), [amount, count, dispatch, onAmountChange]);
 };
 
 Counter.displayName = 'Counter';
-
-Counter.propTypes = {
-  value: PropTypes.number,
-};
 
 export default Counter;

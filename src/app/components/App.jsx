@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
-import './css/App.css';
-import { Counter } from './app/components';
+import '../../css/App.css';
+import Counter from './Counter';
 
 const App = () => useMemo(() => (
   <div className="App">
