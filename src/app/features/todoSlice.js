@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
 const todoSlice = createSlice({
@@ -13,16 +12,17 @@ const todoSlice = createSlice({
     ],
   },
   reducers: {
-    add: (state, { payload: { text } }) => {
-      state.list = [
+    add: (state, action) => ({
+      ...state,
+      list: [
         ...state.list,
         {
           id: state.list.reduce((maxId, { id }) => Math.max(id, maxId) + 1, -1),
           completed: false,
-          text,
+          text: action.payload.text,
         },
-      ];
-    },
+      ],
+    }),
   },
 });
 

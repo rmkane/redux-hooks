@@ -20,8 +20,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint ./ --ignore-path .gitignore",
-    "lint:fix": "npm run lint --fix"
+    "lint": "npx eslint --ext .jsx,.js .",
+    "lint:fix": "npx eslint --cache --fix --ext .jsx,.js .",
+    "lint:fix:all": "npx eslint --fix --ext .jsx,.js ."
   },
   "eslintConfig": {
     "extends": [

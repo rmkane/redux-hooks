@@ -2,3 +2,29 @@
   border: thin solid grey;
   padding: 1em;
 }
+
+.Todo-List {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  gap: 0.5em;
+  margin-top: 1em;
+}
+
+.Todo-Add {
+  display: flex;
+  gap: 0.5em;
+}
+
+.Todo-Add input {
+  display: flex;
+  flex: 1;
+}
+
+.Todo-Item {
+  display: flex;
+  border: thin solid grey;
+  padding: 0.25em;
+}

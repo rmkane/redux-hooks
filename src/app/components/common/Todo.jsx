@@ -12,7 +12,7 @@ const Todo = () => {
   return useMemo(
     () => (
       <div className="Todo">
-        <div>
+        <div className="Todo-Add">
           <input
             type="text"
             placeholder="Enter a description..."
@@ -26,9 +26,11 @@ const Todo = () => {
             Add
           </button>
         </div>
-        <ul>
+        <ul className="Todo-List">
           {todoList.map(({ id, text }) => (
-            <li key={id}>{text}</li>
+            <li className="Todo-Item" key={id}>
+              {text}
+            </li>
           ))}
         </ul>
       </div>
