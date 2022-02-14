@@ -16,7 +16,7 @@ body {
   background: var(--app-background);
   color: var(--app-font-color);
   align-items: center;
-  justify-content: center;
+  justify-content: top;
   flex: 1;
 }
 

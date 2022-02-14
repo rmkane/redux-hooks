@@ -1,6 +1,6 @@
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTodo } from '../../features/todoSlice';
+import { addTodo, removeTodo } from '../../features/todoSlice';
 import '../../../css/Todo.css';
 
 const Todo = () => {
@@ -8,6 +8,17 @@ const Todo = () => {
   const dispatch = useDispatch();
 
   const [entry, setEntry] = useState('');
+
+  const handleAdd = useCallback(() => {
+    dispatch(addTodo({ text: entry }));
+  }, [dispatch, entry]);
+
+  const handleRemove = useCallback(
+    ({ target }) => {
+      dispatch(removeTodo(+target.dataset.id));
+    },
+    [dispatch]
+  );
 
   return useMemo(
     () => (
@@ -19,23 +30,25 @@ const Todo = () => {
             value={entry}
             onChange={({ target: { value } }) => setEntry(value)}
           />
-          <button
-            type="button"
-            onClick={() => dispatch(addTodo({ text: entry }))}
-          >
+          <button type="button" onClick={handleAdd}>
             Add
           </button>
         </div>
         <ul className="Todo-List">
           {todoList.map(({ id, text }) => (
             <li className="Todo-Item" key={id}>
-              {text}
+              <span>
+                [{id}] {text}
+              </span>
+              <button type="button" data-id={id} onClick={handleRemove}>
+                Remove
+              </button>
             </li>
           ))}
         </ul>
       </div>
     ),
-    [dispatch, entry, todoList]
+    [entry, handleAdd, handleRemove, todoList]
   );
 };
 
