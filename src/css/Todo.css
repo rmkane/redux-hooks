@@ -33,3 +33,9 @@
   display: flex;
   flex: 1;
 }
+
+.ButtonGroup {
+  display: flex;
+  margin-left: 1em;
+  gap: 0.5em;
+}

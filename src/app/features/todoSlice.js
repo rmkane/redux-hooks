@@ -1,7 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-const generateNewId = (list) =>
-  list.reduce((maxId, { id }) => Math.max(id, maxId), -1) + 1;
+import { generateNewId } from '../service/common';
 
 const todoSlice = createSlice({
   name: 'todo',
@@ -30,14 +28,20 @@ const todoSlice = createSlice({
         state.list.splice(foundIndex, 1);
       }
     },
+    toggle: (state, action) => {
+      const found = state.list.find(({ id }) => id === action.payload);
+      if (found) {
+        found.completed = !found.completed;
+      }
+    },
   },
 });
 
 const {
-  actions: { add: addTodo, remove: removeTodo },
+  actions: { add: addTodo, remove: removeTodo, toggle: toggleTodo },
   reducer,
 } = todoSlice;
 
-export { addTodo, removeTodo, reducer };
+export { addTodo, removeTodo, toggleTodo, reducer };
 
 export default reducer;
