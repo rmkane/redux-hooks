@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { generateNewId } from '../service/common';
+import { generateNextId } from '../service/common';
 
 const todoSlice = createSlice({
   name: 'todo',
@@ -15,7 +15,7 @@ const todoSlice = createSlice({
   reducers: {
     add: (state, action) => {
       state.list.push({
-        id: generateNewId(state.list),
+        id: generateNextId(state.list),
         completed: false,
         text: action.payload.text,
       });
