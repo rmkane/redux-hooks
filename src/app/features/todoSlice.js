@@ -1,5 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const generateNewId = (list) =>
+  list.reduce((maxId, { id }) => Math.max(id, maxId) + 1, -1);
+
 const todoSlice = createSlice({
   name: 'todo',
   initialState: {
@@ -12,17 +15,13 @@ const todoSlice = createSlice({
     ],
   },
   reducers: {
-    add: (state, action) => ({
-      ...state,
-      list: [
-        ...state.list,
-        {
-          id: state.list.reduce((maxId, { id }) => Math.max(id, maxId) + 1, -1),
-          completed: false,
-          text: action.payload.text,
-        },
-      ],
-    }),
+    add: (state, { payload: { text } }) => {
+      state.list.push({
+        id: generateNewId(state.list),
+        completed: false,
+        text,
+      });
+    },
   },
 });
 
