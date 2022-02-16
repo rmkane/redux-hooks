@@ -27,15 +27,28 @@ const Todo = () => {
     [dispatch]
   );
 
+  const handleEnter = useCallback(
+    (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        handleAdd();
+        setEntry('');
+      }
+    },
+    [handleAdd]
+  );
+
   return useMemo(
     () => (
       <div className="Todo">
         <div className="Todo-Add">
           <input
+            className="Todo-Text"
             type="text"
             placeholder="Enter a description..."
             value={entry}
             onChange={({ target: { value } }) => setEntry(value)}
+            onKeyUp={handleEnter}
           />
           <button type="button" onClick={handleAdd}>
             Add
@@ -44,16 +57,21 @@ const Todo = () => {
         <ul className="Todo-List">
           {todoList.map(({ completed, id, text }) => (
             <li className="Todo-Item" key={id}>
-              <span>
-                [{id}] {text} ({completed ? 'Yes' : 'No'})
-              </span>
+              <input
+                type="checkbox"
+                checked={completed}
+                data-id={id}
+                onChange={handleToggle}
+              />
+              <span>{text}</span>
               <div className="ButtonGroup">
-                <button type="button" data-id={id} onClick={handleToggle}>
-                  Toggle
-                </button>
-                <button type="button" data-id={id} onClick={handleRemove}>
-                  Remove
-                </button>
+                <button
+                  className="RemoveButton"
+                  aria-label="Close"
+                  data-id={id}
+                  onClick={handleRemove}
+                  type="button"
+                />
               </div>
             </li>
           ))}

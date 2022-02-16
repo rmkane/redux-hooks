@@ -18,7 +18,7 @@
   gap: 0.5em;
 }
 
-.Todo-Add input {
+.Todo-Text {
   display: flex;
   flex: 1;
 }
@@ -27,6 +27,7 @@
   display: flex;
   border: thin solid grey;
   padding: 0.25em;
+  gap: 0.5em;
 }
 
 .Todo-Item > span {
@@ -36,6 +37,13 @@
 
 .ButtonGroup {
   display: flex;
-  margin-left: 1em;
   gap: 0.5em;
+}
+
+.RemoveButton {
+  cursor: pointer;
+}
+
+.RemoveButton:after {
+  content: "×";
 }

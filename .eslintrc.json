@@ -27,9 +27,11 @@
     "react-hooks"
   ],
   "rules": {
-    "no-unused-vars": [
-      1
-    ],
+    "no-param-reassign": ["error", {
+      "props": true,
+      "ignorePropertyModificationsFor": ["state"]
+    }],
+    "no-unused-vars": "warn",
     "prettier/prettier": "error",
     "quotes": [2, "single"],
     "react/no-unused-prop-types": "warn",
