@@ -1,16 +1,10 @@
 .Todo {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   border: thin solid #AAA;
   padding: 0.5em;
   gap: 0.5em;
-}
-
-.Header {
-  font-size: 1.5em;
-  font-weight: bold;
 }
 
 .Todo-List {
@@ -42,7 +36,7 @@
   flex: 1;
 }
 
-.Todo-Item > span {
+.Todo-Item > div {
   display: flex;
   flex: 1;
 }

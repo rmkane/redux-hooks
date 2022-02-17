@@ -1,6 +1,13 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTodo, removeTodo, toggleTodo } from '../../features/todoSlice';
+import {
+  addTodo,
+  markAllCompleted,
+  markAllIncomplete,
+  removeAllCompleted,
+  removeTodo,
+  toggleTodo,
+} from '../../features/todoSlice';
 import '../../../css/Todo.css';
 
 const Todo = () => {
@@ -48,6 +55,21 @@ const Todo = () => {
     [handleAdd]
   );
 
+  const markAllCompletedAllowed = useMemo(
+    () => todoList.some(({ completed }) => !completed),
+    [todoList]
+  );
+
+  const markAllIncompleteAllowed = useMemo(
+    () => todoList.some(({ completed }) => completed),
+    [todoList]
+  );
+
+  const removeAllAllowed = useMemo(
+    () => todoList.some(({ completed }) => completed),
+    [todoList]
+  );
+
   return useMemo(
     () => (
       <div className="Todo">
@@ -74,7 +96,7 @@ const Todo = () => {
                 data-id={id}
                 onChange={handleToggle}
               />
-              <span>{text}</span>
+              <div>{text}</div>
               <button
                 className="RemoveButton"
                 aria-label="Close"
@@ -85,9 +107,49 @@ const Todo = () => {
             </li>
           ))}
         </ul>
+        <div className="ButtonGroup">
+          <button
+            type="button"
+            disabled={!markAllCompletedAllowed}
+            onClick={() => dispatch(markAllCompleted())}
+          >
+            Mark All
+            <br />
+            Completed
+          </button>
+          <button
+            type="button"
+            disabled={!markAllIncompleteAllowed}
+            onClick={() => dispatch(markAllIncomplete())}
+          >
+            Mark All
+            <br />
+            Incomplete
+          </button>
+          <button
+            type="button"
+            disabled={!removeAllAllowed}
+            onClick={() => dispatch(removeAllCompleted())}
+          >
+            Remove All
+            <br />
+            Completed
+          </button>
+        </div>
       </div>
     ),
-    [entry, handleAdd, handleEnter, handleRemove, handleToggle, todoList]
+    [
+      dispatch,
+      entry,
+      handleAdd,
+      handleEnter,
+      handleRemove,
+      handleToggle,
+      markAllCompletedAllowed,
+      markAllIncompleteAllowed,
+      removeAllAllowed,
+      todoList,
+    ]
   );
 };
 

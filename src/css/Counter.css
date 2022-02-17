@@ -7,11 +7,6 @@
   padding: 0.5em;
 }
 
-.Header {
-  font-size: 1.5em;
-  font-weight: bold;
-}
-
 .Value {
   font-size: 3em;
   margin-bottom: 1rem;
@@ -20,10 +15,4 @@
 .AddAmount {
   display: flex;
   gap: 0.5em;
-}
-
-.ButtonGroup {
-  display: flex;
-  gap: 0.33em;
-  padding: 0.33em;
 }

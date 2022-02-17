@@ -10,6 +10,16 @@ const todoSlice = createSlice({
         completed: false,
         id: 1,
       },
+      {
+        text: 'Implement the services',
+        completed: false,
+        id: 2,
+      },
+      {
+        text: 'Finalize the components',
+        completed: false,
+        id: 3,
+      },
     ],
   },
   reducers: {
@@ -34,14 +44,46 @@ const todoSlice = createSlice({
         found.completed = !found.completed;
       }
     },
+    markAllCompleted: (state) => {
+      state.list.forEach((item) => {
+        Object.assign(item, { completed: true });
+      });
+    },
+    markAllIncomplete: (state) => {
+      state.list.forEach((item) => {
+        Object.assign(item, { completed: false });
+      });
+    },
+    removeAllCompleted: (state) => {
+      for (let i = state.list.length - 1; i >= 0; i -= 1) {
+        if (state.list[i].completed) {
+          state.list.splice(i, 1);
+        }
+      }
+    },
   },
 });
 
 const {
-  actions: { add: addTodo, remove: removeTodo, toggle: toggleTodo },
+  actions: {
+    add: addTodo,
+    markAllCompleted,
+    markAllIncomplete,
+    remove: removeTodo,
+    removeAllCompleted,
+    toggle: toggleTodo,
+  },
   reducer,
 } = todoSlice;
 
-export { addTodo, removeTodo, toggleTodo, reducer };
+export {
+  addTodo,
+  markAllCompleted,
+  markAllIncomplete,
+  removeAllCompleted,
+  removeTodo,
+  toggleTodo,
+  reducer,
+};
 
 export default reducer;
