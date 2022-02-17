@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   border: thin solid #AAA;
-  padding: 1em;
+  padding: 0.5em;
 }
 
 .Header {
@@ -15,4 +15,15 @@
 .Value {
   font-size: 3em;
   margin-bottom: 1rem;
+}
+
+.AddAmount {
+  display: flex;
+  gap: 0.5em;
+}
+
+.ButtonGroup {
+  display: flex;
+  gap: 0.33em;
+  padding: 0.33em;
 }

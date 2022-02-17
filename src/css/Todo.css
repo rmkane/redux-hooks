@@ -1,6 +1,16 @@
 .Todo {
-  border: thin solid grey;
-  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: thin solid #AAA;
+  padding: 0.5em;
+  gap: 0.5em;
+}
+
+.Header {
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
 .Todo-List {
@@ -10,7 +20,7 @@
   margin: 0;
   padding: 0;
   gap: 0.5em;
-  margin-top: 1em;
+  flex: 1;
 }
 
 .Todo-Add {
@@ -28,16 +38,13 @@
   border: thin solid grey;
   padding: 0.25em;
   gap: 0.5em;
+  align-items: center;
+  flex: 1;
 }
 
 .Todo-Item > span {
   display: flex;
   flex: 1;
-}
-
-.ButtonGroup {
-  display: flex;
-  gap: 0.5em;
 }
 
 .RemoveButton {

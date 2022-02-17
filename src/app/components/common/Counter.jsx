@@ -22,7 +22,7 @@ const Counter = () => {
       <div className="Counter">
         <div className="Header">Counter</div>
         <div className="Value">{count}</div>
-        <div>
+        <div className="ButtonGroup">
           <button
             type="button"
             aria-label="Increment value"
@@ -38,7 +38,7 @@ const Counter = () => {
             Decrement
           </button>
         </div>
-        <div>
+        <div className="AddAmount">
           <input
             type="number"
             size="3"

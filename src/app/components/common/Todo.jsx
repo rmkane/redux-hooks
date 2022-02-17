@@ -10,19 +10,30 @@ const Todo = () => {
   const [entry, setEntry] = useState('');
 
   const handleAdd = useCallback(() => {
-    dispatch(addTodo({ text: entry }));
+    if (entry?.trim()) {
+      dispatch(addTodo({ text: entry }));
+      setEntry('');
+    }
   }, [dispatch, entry]);
 
   const handleToggle = useCallback(
-    ({ target }) => {
-      dispatch(toggleTodo(+target.dataset.id));
+    ({
+      target: {
+        dataset: { id },
+      },
+    }) => {
+      dispatch(toggleTodo(+id));
     },
     [dispatch]
   );
 
   const handleRemove = useCallback(
-    ({ target }) => {
-      dispatch(removeTodo(+target.dataset.id));
+    ({
+      target: {
+        dataset: { id },
+      },
+    }) => {
+      dispatch(removeTodo(+id));
     },
     [dispatch]
   );
@@ -32,7 +43,6 @@ const Todo = () => {
       if (e.key === 'Enter') {
         e.preventDefault();
         handleAdd();
-        setEntry('');
       }
     },
     [handleAdd]
@@ -41,6 +51,7 @@ const Todo = () => {
   return useMemo(
     () => (
       <div className="Todo">
+        <div className="Header">Todo</div>
         <div className="Todo-Add">
           <input
             className="Todo-Text"
@@ -64,21 +75,19 @@ const Todo = () => {
                 onChange={handleToggle}
               />
               <span>{text}</span>
-              <div className="ButtonGroup">
-                <button
-                  className="RemoveButton"
-                  aria-label="Close"
-                  data-id={id}
-                  onClick={handleRemove}
-                  type="button"
-                />
-              </div>
+              <button
+                className="RemoveButton"
+                aria-label="Close"
+                data-id={id}
+                onClick={handleRemove}
+                type="button"
+              />
             </li>
           ))}
         </ul>
       </div>
     ),
-    [entry, handleAdd, handleRemove, handleToggle, todoList]
+    [entry, handleAdd, handleEnter, handleRemove, handleToggle, todoList]
   );
 };
 
